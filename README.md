@@ -14,4 +14,11 @@ should be sufficient in order to generate the plugin's jar file.
 ## Installing
 
 It should be installed as a keycloak extension on a existing keycloak instance, meaning that it should be deployed as a wildfly module (use the provided module.xml file), and also be added as a dependency in `keycloak-services` module xml, by adding the entry
-`<module name="org.keycloak.keycloak-oidc-federation" services="import"/>` 
+`<module name="org.keycloak.keycloak-oidc-federation" services="import"/>` .
+
+Otherwise, a Docker compose file is provided to run Keycloak with the plugin installed.
+
+```
+docker compose up --build
+```
+
