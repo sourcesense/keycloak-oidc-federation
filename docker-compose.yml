@@ -9,6 +9,8 @@ services:
       POSTGRES_PASSWORD: password
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
 
   keycloak:
     build:
@@ -21,11 +23,14 @@ services:
       KC_HOSTNAME: localhost
       KEYCLOAK_ADMIN: admin
       KEYCLOAK_ADMIN_PASSWORD: admin
+      DEBUG_PORT: '*:8787'
+      KC_LOG_LEVEL: DEBUG
     ports:
       - "8080:8080"
+      - "8787:8787"
     depends_on:
       - postgres
-    command: start-dev
+    command: --debug start-dev
 
 volumes:
   postgres_data:
